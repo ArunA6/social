@@ -1,6 +1,12 @@
 
 <html>
-
+    
+    <style>
+        .tweet:hover{
+            background-color: gray;
+        }
+    </style>
+    
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     
@@ -78,7 +84,7 @@
                 console.log(data[u]);
                 for (var t in data.tweets[u]) {
                     console.log(data.tweets[u][t].tweet);
-                    mylist = mylist + "<li>" + data.tweets[u][t].tweet + " (" + data.users[u].email + ")</li>";
+                    mylist = mylist + "<li class='tweet'>" + data.tweets[u][t].tweet + " (" + data.users[u].email + ")</li>";
                 } 
             }
             mylist = mylist + "</ul>";
