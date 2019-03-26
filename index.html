@@ -2,8 +2,13 @@
 <html>
     
     <style>
+        .tweet{
+            background-color: lightgray;
+            cursor: pointer;
+        }
         .tweet:hover{
-            background-color: gray;
+            background-color: lightgray;
+            cursor: pointer;
         }
     </style>
     
@@ -84,7 +89,7 @@
                 console.log(data[u]);
                 for (var t in data.tweets[u]) {
                     console.log(data.tweets[u][t].tweet);
-                    mylist = mylist + "<li class='tweet'>" + data.tweets[u][t].tweet + " (" + data.users[u].email + ")</li>";
+                    mylist = mylist + "<li class='tweet'><b>" + data.tweets[u][t].tweet + "</b> (" + data.users[u].email + ")</li>";
                 } 
             }
             mylist = mylist + "</ul>";
