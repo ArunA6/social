@@ -156,13 +156,7 @@
                 console.log(data[u]);
                 for (var t in data.tweets[u]) {
                     console.log(data.tweets[u][t].tweet);
-                    var l = data.tweets[u][t].tweet.length();
-                    if (data.tweets[u][t].tweet.substring(l-4, l).equals(".jpg")){
-                        mylist = mylist + "<li><img src='" + data.tweets[u][t].tweet + "'><br>(" + data.users[u].email + ")</li>";
-                    }
-                    else{
-                        mylist = mylist + "<li class='tweet'><b>" + data.tweets[u][t].tweet + "</b>  (" + data.users[u].email + ")</li>";
-                    }
+                    mylist = mylist + "<li class='tweet'><b>" + data.tweets[u][t].tweet + "</b>  (" + data.users[u].email + ")</li>";
                 } 
             }
             mylist = mylist + "</ul>";
