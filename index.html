@@ -6,6 +6,77 @@
             background-color: lightgray;
             cursor: pointer;
         }
+        .topnav {
+          overflow: hidden;
+          background-color: black;
+            border-bottom: 1px solid white;
+        }
+
+        .topnav a {
+          float: left;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+        }
+
+        .topnav a:hover {
+          background-color: white;
+          color: black;
+        }
+
+        .topnav a.active {
+          background-color: #0000ff;
+          color: white;
+        }
+
+        .btn {
+            background-color: black;
+            font-family: Times New Roman;
+            border: 3px solid white;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            font-size: 25px;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+        
+        .signbtn{
+            padding: 8px 16px;
+            background-color: white;
+            color: black;
+            border: 3px solid black;
+        }
+        
+        .signbtn:hover{
+            padding: 8px 16px;
+            background-color: limegreen;
+            color: white;
+            border: 3px solid limegreen;
+            cursor: pointer;
+        }
+        
+        .submit {
+          padding: 8px 16px;
+            background-color: white;
+            color: black;
+            border: 3px solid black;
+        }
+        
+        .submit:hover {
+          padding: 8px 16px;
+            background-color: blue;
+            color: white;
+            border: 3px solid blue;
+            cursor: pointer;
+        }
     </style>
     
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
@@ -85,7 +156,13 @@
                 console.log(data[u]);
                 for (var t in data.tweets[u]) {
                     console.log(data.tweets[u][t].tweet);
-                    mylist = mylist + "<li class='tweet'><b>" + data.tweets[u][t].tweet + "</b> (" + data.users[u].email + ")</li>";
+                    var l = data.tweets[u][t].tweet.length();
+                    if (data.tweets[u][t].tweet.substring(l-4, l).equals(".jpg")){
+                        mylist = mylist + "<li><img src='" + data.tweets[u][t].tweet + "'><br>(" + data.users[u].email + ")</li>";
+                    }
+                    else{
+                        mylist = mylist + "<li class='tweet'><b>" + data.tweets[u][t].tweet + "</b>  (" + data.users[u].email + ")</li>";
+                    }
                 } 
             }
             mylist = mylist + "</ul>";
@@ -129,18 +206,31 @@
             firebase.auth().signOut().then(function() {
             });
         }
+        
+        function showUser(){
+            
+        }
     
     </script>
 
     <body>
-        <button onclick="signin()">Sign in</button>
-        <button onclick="signout()">Sign out</button>
+        <a href="index.html"><button class="btn" style="margin-left: 6%; width: 28%">Home</button></a>
+        <a href="game.html"><button class="btn" style="width: 28%">Explore</button></a>
+        <a href="https://github.com/arun-s-group/agilescrumproject/wiki"><button class="btn" style="margin-right: 6%; width: 28%">Profile</button></a>
+        
+        <br><br>
+        
+        <button class="signbtn" onclick="signin()">Sign in</button>
+        <button class="signbtn" onclick="signout()">Sign out</button>
+        
+        <br><br>
     
         <form>
-            Tweet:<br>
+            <b>Tweet:</b><br>
             <textarea id="twit" type="text" name="thetweet" cols="100" rows="4"></textarea>
         </form> 
-        <button type="button" onclick="tweet()">Submit</button>
+        
+        <button class="submit" type="button" onclick="tweet()">Submit</button>
     
     <div id="mytweets"></div>
     <div id="mydata"></div>
@@ -149,3 +239,4 @@
 
     
 </html>
+
